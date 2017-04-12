@@ -7,6 +7,7 @@ describe('Thermostat', function(){
 
   beforeEach(function() {
     thermostat = new Thermostat();
+    thermostat.resetTemperature();
   });
 
   it('thermostat starts at 20deg', function() {
@@ -80,14 +81,26 @@ describe('Thermostat', function(){
     });
   });
 
-  // can ask about the thermostat's current energy usage: < 18 is low-usage,
- // < 25 is medium-usage, anything else is high-usage.
+
   describe('Energy usage', function () {
     it("should return 'low-usage' when temperature < 18 degrees", function (){
       for (var i = 0; i < 5; i++) {
         thermostat.down();
       }
       expect(thermostat.energyUsage()).toEqual('low-usage');
+    });
+
+    it("should return 'medium-usage' when temperature < 25 degrees", function (){
+      thermostat.resetTemperature();
+      expect(thermostat.energyUsage()).toEqual('medium-usage');
+    });
+
+    it("should return 'high-usage' when temperature > 25 degrees", function (){
+      thermostat.switchPowerSavingModeOff();
+      for (var i = 0; i < 6; i++) {
+        thermostat.up();
+      }
+      expect(thermostat.energyUsage()).toEqual('high-usage');
     });
   });
 });
