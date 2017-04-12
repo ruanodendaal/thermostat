@@ -71,5 +71,14 @@ describe('Thermostat', function(){
     });
   });
 
+  describe('Reset temperature', function() {
+    it('can reset to 20', function() {
+      thermostat.up();
+      expect(thermostat.getCurrentTemperature()).toEqual(21);
+      thermostat.resetTemperature();
+      expect(thermostat.getCurrentTemperature()).toEqual(20);
+    });
+  });
+
 
 });
