@@ -7,8 +7,16 @@
   <body>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <section>
-      <h1 id="temperature"></h1>
+      <h1>Current temperature: <span id="current-temperature"></span></h1>
+      <select id='current-city'>
+        <option value="london">London</option>
+        <option value="newyork">New York</option>
+        <option value="paris">Paris</option>
+        <option value="capetown">Cape Town</option>
+      </select>
+    </section>
       <p>
+        <h1 id="temperature"></h1>
         <button id="temperature-up">+</button>
         <button id="temperature-down">-</button>
         <button id="temperature-reset">reset</button>

@@ -1,6 +1,26 @@
 $( document ).ready(function() {
   var thermostat = new Thermostat();
   updateTemperature();
+  displayWeather('London');
+
+
+  $('#current-city').change(function() {
+    event.preventDefault();
+    var city = $('#current-city').val();
+    displayWeather(city);
+  });
+
+  function displayWeather(city) {
+    var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city;
+
+// ADD YOUR OWN API KEY!!!!!!
+    var token = '&appid=';
+    var units = '&units=metric';
+    $.get(url + token + units, function(data) {
+      $('#current-temperature').text(data.main.temp);
+    });
+  }
+
 
   $( "#temperature-up" ).click(function( event ) {
     thermostat.up();
