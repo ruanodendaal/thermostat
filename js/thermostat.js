@@ -38,6 +38,7 @@ $( document ).ready(function() {
 
   function updateTemperature() {
     $('#temperature').text(thermostat._temperature);
+    $('#temperature').attr('class', thermostat.energyUsage());
   }
 
 
