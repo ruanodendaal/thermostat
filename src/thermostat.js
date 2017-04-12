@@ -55,3 +55,7 @@ Thermostat.prototype.switchPowerSavingModeOn = function() {
 Thermostat.prototype.resetTemperature = function() {
   this._temperature = this.DEFAULT_TEMPERATURE;
 };
+
+Thermostat.prototype.energyUsage = function () {
+  return 'low-usage';
+};
